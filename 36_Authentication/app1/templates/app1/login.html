@@ -1,0 +1,51 @@
+{% extends "app1/base.html" %} 
+
+{% block title %} Login {% endblock title %} 
+
+{% block body %}
+
+
+{% endblock body %}
+
+{% block content %}
+<div class="flex-grow flex items-center justify-center p-4">
+
+<div class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center text-red-500">Login an Account</h2>
+<form action="" method='POST' novalidate>
+  {% csrf_token %}
+
+  <input type="email" name="email" placeholder="Email" required
+    class="w-full p-2 rounded bg-gray-700 text-white mb-2" />
+
+  {% comment %} <input type="text" name="username" placeholder="Username" required
+    class="w-full p-2 rounded bg-gray-700 text-white mb-2" /> {% endcomment %}
+    
+  <input type="password" name="password" placeholder="Password" required
+    class="w-full p-2 rounded bg-gray-700 text-white mb-2" />
+
+
+<!-- forget password-->
+    <div class="text-right text-sm text-blue-400 hover:text-blue-600 mt-2 mb-4">
+        <a href="{% url "change_password" %}">Forgot password?</a>
+    </div> 
+    
+
+    <button type="submit"
+      class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded font-semibold">
+      Login
+    </button>
+    
+    <div class='text-center'>
+
+        <p class='text-sm text-gary-400' >
+          Create Account
+          <a href="{% url 'Register' %}" class='text-blue-600 hover:underline'>
+              login
+          </a>
+        </p>
+      </div>
+</form> 
+
+
+{% endblock content %}

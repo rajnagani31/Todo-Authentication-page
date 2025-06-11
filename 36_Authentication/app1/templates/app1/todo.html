@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Updated Sky Blue Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: skyblue;
+            padding: 20px 30px;
+        }
+
+        /* Left and right sections */
+        .left-buttons, .right-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Plain text-style buttons */
+        .navbar button {
+            background: none;
+            border: none;
+            color: black;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .navbar button:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="left-buttons">
+            <a href="{% url 'profile'%}"> <button>Profile</button> </a>
+            
+            
+        </div>
+        <div class="right-buttons">
+            
+            <a href="{% url 'logout'%}"> <button>Logout</button> </a>
+            <a href="{% url 'delete_account'%}"> <button>Delete</button> </a>
+        </div>
+    </div>
+    <main class="flex-grow text-white bg-gary-600">
+    {% if messages %}
+      {% for message in messages %}
+        <span class="{{message.tags}} bg-rose-600 p-2 font-bold">
+        {{message}} <br><br>
+        </span>
+      {% endfor %}
+    {% endif %}
+   </main>
+    {% block content %}{% endblock content %}
+</body>
+</html>

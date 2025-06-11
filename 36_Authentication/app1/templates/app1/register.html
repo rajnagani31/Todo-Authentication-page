@@ -1,0 +1,74 @@
+{% extends "app1/base.html" %} 
+
+{% block title  %} Creat Account{% endblock title  %}
+{% block body %}
+
+
+{% endblock body %}
+
+{% block content %}
+ 
+<div class="flex-grow flex items-center justify-center p-4">
+
+  <!-- Registration Box (centered) -->
+  <div class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center text-red-500">Create an Account</h2>
+
+   <form method="POST" class="space-y-4" novalidate>
+      {% csrf_token %}
+      {% for field in form %}
+      <div>
+        {{field.label_tag}}
+        {{field}}
+        {% for error in field.errors %}
+        <p class="text-red-400 text-sm">
+        {{error}}
+        </p>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      
+      <!-- {% for field in form  %}
+      <div class='mb-4'>
+        {{field.label_tag}}
+        {{field}}
+        {% comment %} <p class="text-red-400 text-sm">{{ field.errors }}</p> {% endcomment %}
+      </div>
+      
+      
+      {% endfor %}-->
+      {% if form.non_field_errors %}
+        <div class="text-red-400 text-sm mb-4">
+        {% for error in form.non_field_errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+        </div>
+      {% endif %} 
+
+
+
+      <!-- Register Button (Red) -->
+       <div class="text-center mt-6">
+      <a href="{% url 'todo' %}">
+    <button 
+      type="submit"
+      class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded font-semibold transition duration-150"
+    >
+      Register
+    </button>
+  </a>
+      
+
+      <div class='text-center'>
+
+        <p class='text-sm text-gary-400' >
+          existing user?
+          <a href="{% url 'login' %}" class='text-blue-600 hover:underline'>
+              login
+          </a>
+        </p>
+      </div>
+    </form>
+  </div>
+
+{% endblock content %}

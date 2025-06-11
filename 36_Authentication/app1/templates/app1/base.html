@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}  {% endblock title %}</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+</head>
+<body>
+    
+<body class="bg-black text-white font-sans min-h-screen flex flex-col">
+    
+    
+</body>
+
+  <!-- Navbar -->
+<nav class="flex items-center justify-between bg-black text-white px-6 py-4 shadow-md">
+  <!-- Left Side: Nav buttons -->
+  <div class="flex space-x-4">
+    <a href="{% url 'home' %}" class="hover:bg-gray-800 px-4 py-2 rounded">Home</a>
+    <a href="{% url 'Register' %}" class="hover:bg-gray-800 px-4 py-2 rounded">Register</a>
+    <a href="{% url 'login' %}" class="hover:bg-gray-800 px-4 py-2 rounded">Sign In</a>
+    {% comment %} <a href="{% url 'logout' %}" class="hover:bg-gray-800 px-4 py-2 rounded">Logout</a>
+    <a href="{% url 'change_password' %}" class="hover:bg-gray-800 px-4 py-2 rounded">Change Password</a> {% endcomment %}
+  </div>
+
+  <!-- ✅ Right Side: Company name -->
+  <div class="text-3xl font-semibold" >
+    Authentication Page
+  </div>
+  
+</nav>
+   <main class="flex-grow text-white bg-gary-600">
+    {% if messages %}
+      {% for message in messages %}
+        <span class="{{message.tags}} bg-rose-600 p-2 font-bold">
+        {{message}} <br><br>
+        </span>
+      {% endfor %}
+    {% endif %}
+   </main>
+  {% block content %}{% endblock content %}
+
+</body>
+</html>

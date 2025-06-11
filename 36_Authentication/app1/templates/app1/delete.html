@@ -1,0 +1,31 @@
+{% extends "app1/todo.html" %}
+
+{% block content %}
+
+
+
+  <div class="flex-grow flex items-center justify-center p-32">
+    <div class="bg-black-800 p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+      <h2 >Are you sure you want to delete your account?</h2> <br>
+            <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required
+            class="w-full p-2 rounded bg-gray-700 text-white mb-2" />
+            <button
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded font-semibold mb-4"
+            >
+            Delete Account
+            </button>
+        
+        <div class="flex justify-center mb-2">
+    
+</form>
+            
+     
+
+
+
+
+
+{% endblock content %}
